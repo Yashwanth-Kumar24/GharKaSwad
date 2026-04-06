@@ -1,9 +1,9 @@
 /* ===== GHAR KA SWAD — Main JS ===== */
 /* Edit SITE_DATA below to update menu items, prices, timings, and testimonials */
-/* This file is the single source of truth — no need to edit the data folder    */
+/* This file is the single source of truth                                      */
 
 const SITE_DATA = {
-  whatsapp_number: "YOUR_NUMBER_HERE", // e.g. "919876543210" — no + or spaces
+  whatsapp_number: "916300315974",
   currency: "$",
 
   items: [
@@ -40,7 +40,7 @@ const SITE_DATA = {
     {
       id: "combo",
       name: "The Full Set",
-      tagline: "Best Value ⭐",
+      tagline: "Best Value",
       description: "Chai + Bun Maska + Sponge Cake. Everything you need in one go. The ultimate homestyle combo.",
       price: 5.99,
       badge: "Combo Offer",
@@ -61,13 +61,40 @@ const SITE_DATA = {
   ],
 
   availability: [
-    { day: "Monday",    hours: "11:00 AM – 11:00 PM", open: true  },
-    { day: "Tuesday",   hours: "11:00 AM – 11:00 PM", open: true  },
-    { day: "Wednesday", hours: "11:00 AM – 5:00 PM",  open: true  },
+    { day: "Monday",    hours: "11:00 AM - 11:00 PM", open: true  },
+    { day: "Tuesday",   hours: "11:00 AM - 11:00 PM", open: true  },
+    { day: "Wednesday", hours: "11:00 AM - 5:00 PM",  open: true  },
     { day: "Thursday",  hours: "Closed",              open: false },
     { day: "Friday",    hours: "Closed",              open: false },
     { day: "Saturday",  hours: "Closed",              open: false },
-    { day: "Sunday",    hours: "11:00 AM – 11:00 PM", open: true  }
+    { day: "Sunday",    hours: "11:00 AM - 11:00 PM", open: true  }
+  ],
+
+  coming_soon: [
+    {
+      name: "Karapusa / Murukulu",
+      emoji: "🌀",
+      description: "Crunchy, spiced, and utterly addictive. Perfect for snacking or sharing at parties. Great for bulk orders.",
+      tag: "Bulk-Friendly"
+    },
+    {
+      name: "Onion Pakodi",
+      emoji: "🧅",
+      description: "Crispy golden fritters with a kick of green chilli and fresh onion. Best had hot off the pan — perfect for pickup.",
+      tag: "Best Fresh"
+    },
+    {
+      name: "Atukulu / Bhel Mixture",
+      emoji: "🥣",
+      description: "A light, flavourful flattened rice mix loaded with crunch and spice. Great as an evening snack, brilliant in bulk.",
+      tag: "Bulk-Friendly"
+    },
+    {
+      name: "Brownie + Ice Cream",
+      emoji: "🍫",
+      description: "Warm homemade brownie paired with a scoop of ice cream. The indulgent combo you didn't know you needed.",
+      tag: "Dessert Combo"
+    }
   ],
 
   testimonials: [
@@ -97,7 +124,7 @@ const SITE_DATA = {
     },
     {
       id: 4,
-      name: "Vikram K.",
+      name: "Surya",
       avatar: "V",
       rating: 5,
       text: "Ordered the combo on a lazy Sunday — chai, bun, and cake. Honestly felt like a home snack. Great value for the price.",
@@ -118,7 +145,7 @@ const SITE_DATA = {
 function whatsappLink(number, message) {
   const num = (number || "").replace(/\D/g, "");
   const msg = encodeURIComponent(message || "Hi! I'd like to place an order from Ghar Ka Swad.");
-  return `https://wa.me/${+916300315974}?text=${msg}`;
+  return "https://wa.me/" + num + "?text=" + msg;
 }
 
 /* ===== Build Menu Cards ===== */
@@ -129,115 +156,114 @@ function buildMenuCards() {
   const wa  = SITE_DATA.whatsapp_number;
   const cur = SITE_DATA.currency || "$";
 
-  grid.innerHTML = SITE_DATA.items.map(item => {
-    const isCombo = item.id === "combo";
-    const hasPrice = item.price !== "" && item.price !== null && item.price !== undefined;
-    const priceStr = hasPrice
-      ? `${cur}${Number(item.price).toFixed(2)}`
+  grid.innerHTML = SITE_DATA.items.map(function(item) {
+    const isCombo   = item.id === "combo";
+    const hasPrice  = item.price !== "" && item.price !== null && item.price !== undefined;
+    const priceStr  = hasPrice
+      ? cur + Number(item.price).toFixed(2)
       : (item.price_label || "Price on Request");
     const priceClass = hasPrice ? "" : "price-request";
 
-    const badges = [];
+    var badges = [];
     if (item.badge === "Combo Offer")  badges.push('<span class="badge badge-combo">Combo</span>');
     if (item.badge === "Pre-Order")    badges.push('<span class="badge badge-preorder">Pre-Order</span>');
     if (item.contains === "egg")       badges.push('<span class="badge badge-egg">Contains Egg</span>');
-    const badgeHTML = badges.length
-      ? `<div class="menu-card-badges">${badges.join("")}</div>` : "";
+    var badgeHTML = badges.length ? '<div class="menu-card-badges">' + badges.join("") + '</div>' : "";
 
-    const orderMsg = `Hi! I'd like to order ${item.name} from Ghar Ka Swad.`;
+    var orderMsg = "Hi! I'd like to order " + item.name + " from Ghar Ka Swad.";
+    var waHref   = whatsappLink(wa, orderMsg);
 
-    return `
-      <div class="menu-card${isCombo ? " combo-highlight" : ""}">
-        <img class="menu-card-img" src="${item.image}" alt="${item.name}" loading="lazy"
-          onerror="this.onerror=null;this.style.background='#f0e8dc';this.style.minHeight='200px';" />
-        <div class="menu-card-body">
-          ${badgeHTML}
-          <div class="menu-card-tagline">${item.tagline}</div>
-          <h3 class="menu-card-name">${item.name}</h3>
-          <p class="menu-card-desc">${item.description}</p>
-          <div class="menu-card-footer">
-            <span class="menu-card-price ${priceClass}">${priceStr}</span>
-            <a href="${whatsappLink(wa, orderMsg)}" target="_blank" rel="noopener" class="menu-card-order">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-              </svg>
-              Order
-            </a>
-          </div>
-        </div>
-      </div>
-    `;
+    var waSVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
+
+    return '<div class="menu-card' + (isCombo ? " combo-highlight" : "") + '">'
+      + '<img class="menu-card-img" src="' + item.image + '" alt="' + item.name + '" loading="lazy" onerror="this.onerror=null;this.style.background=\'#f0e8dc\';this.style.minHeight=\'200px\';" />'
+      + '<div class="menu-card-body">'
+      + badgeHTML
+      + '<div class="menu-card-tagline">' + item.tagline + '</div>'
+      + '<h3 class="menu-card-name">' + item.name + '</h3>'
+      + '<p class="menu-card-desc">' + item.description + '</p>'
+      + '<div class="menu-card-footer">'
+      + '<span class="menu-card-price ' + priceClass + '">' + priceStr + '</span>'
+      + '<a href="' + waHref + '" target="_blank" rel="noopener" class="menu-card-order">' + waSVG + ' Order</a>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
   }).join("");
 }
 
 /* ===== Build Availability Table ===== */
 function buildAvailability() {
-  const tbody = document.getElementById("avail-tbody");
+  var tbody = document.getElementById("avail-tbody");
   if (!tbody) return;
 
-  tbody.innerHTML = SITE_DATA.availability.map(row => {
-    const cls    = row.open ? "open"     : "closed";
-    const dotCls = row.open ? "dot-open" : "dot-closed";
-    return `
-      <tr>
-        <td class="day-col">${row.day}</td>
-        <td class="hours-col ${cls}">
-          <span class="dot ${dotCls}"></span>${row.hours}
-        </td>
-      </tr>
-    `;
+  tbody.innerHTML = SITE_DATA.availability.map(function(row) {
+    var cls    = row.open ? "open"     : "closed";
+    var dotCls = row.open ? "dot-open" : "dot-closed";
+    return '<tr>'
+      + '<td class="day-col">' + row.day + '</td>'
+      + '<td class="hours-col ' + cls + '"><span class="dot ' + dotCls + '"></span>' + row.hours + '</td>'
+      + '</tr>';
+  }).join("");
+}
+
+/* ===== Build Coming Soon ===== */
+function buildComingSoon() {
+  var grid = document.getElementById("coming-grid");
+  if (!grid || !SITE_DATA.coming_soon) return;
+
+  grid.innerHTML = SITE_DATA.coming_soon.map(function(item) {
+    return '<div class="coming-card">'
+      // + '<div class="coming-emoji">' + item.emoji + '</div>'
+      // + '<div class="coming-soon-badge">Coming Soon</div>'
+      + '<h3 class="coming-name">' + item.name + '</h3>'
+      + '<p class="coming-desc">' + item.description + '</p>'
+      + '<span class="coming-tag">' + item.tag + '</span>'
+      + '</div>';
   }).join("");
 }
 
 /* ===== Star rating helper (supports .5) ===== */
 function renderStars(rating) {
-  let html = "";
-  for (let i = 1; i <= 5; i++) {
+  var html = "";
+  for (var i = 1; i <= 5; i++) {
     if (rating >= i) {
-      html += '<span class="testi-star full">★</span>';
+      html += '<span class="testi-star full">&#9733;</span>';
     } else if (rating >= i - 0.5) {
-      html += '<span class="testi-star half">★</span>';
+      html += '<span class="testi-star half">&#9733;</span>';
     } else {
-      html += '<span class="testi-star empty">★</span>';
+      html += '<span class="testi-star empty">&#9733;</span>';
     }
   }
   return html;
 }
 
 /* ===== Build Testimonials (auto-scroll + prev/next) ===== */
-let testiAutoPlay = null;
-let testiIndex    = 0;
+var testiAutoPlay = null;
+var testiIndex    = 0;
 
 function buildTestimonials() {
-  const track = document.getElementById("testi-track");
+  var track = document.getElementById("testi-track");
   if (!track) return;
 
-  const cards = SITE_DATA.testimonials.map(t => {
-    const avatarLetter = t.avatar || t.name.charAt(0).toUpperCase();
-    return `
-      <div class="testi-card">
-        <div class="testi-stars">${renderStars(t.rating)}</div>
-        <p class="testi-text">"${t.text}"</p>
-        <div class="testi-author">
-          <div class="testi-avatar">${avatarLetter}</div>
-          <div>
-            <div class="testi-name">${t.name}</div>
-            <div class="testi-item">${t.item}</div>
-          </div>
-        </div>
-      </div>
-    `;
+  var cards = SITE_DATA.testimonials.map(function(t) {
+    var avatarLetter = t.avatar || t.name.charAt(0).toUpperCase();
+    return '<div class="testi-card">'
+      + '<div class="testi-stars">' + renderStars(t.rating) + '</div>'
+      + '<p class="testi-text">&ldquo;' + t.text + '&rdquo;</p>'
+      + '<div class="testi-author">'
+      + '<div class="testi-avatar">' + avatarLetter + '</div>'
+      + '<div><div class="testi-name">' + t.name + '</div>'
+      + '<div class="testi-item">' + t.item + '</div></div>'
+      + '</div></div>';
   }).join("");
 
-  // Duplicate for seamless infinite loop
-  track.innerHTML = cards + cards;
-
+  track.innerHTML = cards + cards; // duplicate for seamless loop
   startAutoScroll();
 }
 
 function startAutoScroll() {
   stopAutoScroll();
-  testiAutoPlay = setInterval(() => scrollTesti(1), 3500);
+  testiAutoPlay = setInterval(function() { scrollTesti(1); }, 3500);
 }
 
 function stopAutoScroll() {
@@ -245,17 +271,17 @@ function stopAutoScroll() {
 }
 
 function scrollTesti(dir) {
-  const track = document.getElementById("testi-track");
+  var track = document.getElementById("testi-track");
   if (!track) return;
 
-  const cardWidth = track.querySelector(".testi-card")?.offsetWidth + 24 || 344; // card + gap
-  const total     = SITE_DATA.testimonials.length;
+  var card      = track.querySelector(".testi-card");
+  var cardWidth = card ? card.offsetWidth + 24 : 344;
+  var total     = SITE_DATA.testimonials.length;
 
   testiIndex = (testiIndex + dir + total) % total;
   track.style.transition = "transform 0.45s ease";
-  track.style.transform  = `translateX(-${testiIndex * cardWidth}px)`;
+  track.style.transform  = "translateX(-" + (testiIndex * cardWidth) + "px)";
 
-  // Reset to duplicate set when we reach the end to keep it seamless
   track.addEventListener("transitionend", function onEnd() {
     track.removeEventListener("transitionend", onEnd);
     if (testiIndex === 0 && dir === 1) {
@@ -268,7 +294,7 @@ function scrollTesti(dir) {
 function testiPrev() {
   stopAutoScroll();
   scrollTesti(-1);
-  setTimeout(startAutoScroll, 6000); // restart after 6s idle
+  setTimeout(startAutoScroll, 6000);
 }
 
 function testiNext() {
@@ -279,36 +305,40 @@ function testiNext() {
 
 /* ===== Wire up all WhatsApp links ===== */
 function buildWhatsAppLinks() {
-  const link = whatsappLink(SITE_DATA.whatsapp_number);
-  document.querySelectorAll("[data-wa]").forEach(el => { el.href = link; });
+  var link = whatsappLink(SITE_DATA.whatsapp_number);
+  var els  = document.querySelectorAll("[data-wa]");
+  for (var i = 0; i < els.length; i++) {
+    els[i].href = link;
+  }
 }
 
 /* ===== Nav shadow on scroll ===== */
 function initNavScroll() {
-  const nav = document.querySelector("nav");
+  var nav = document.querySelector("nav");
   if (!nav) return;
-  window.addEventListener("scroll", () => {
-    nav.style.boxShadow = window.scrollY > 20
-      ? "0 2px 20px rgba(0,0,0,0.3)" : "none";
+  window.addEventListener("scroll", function() {
+    nav.style.boxShadow = window.scrollY > 20 ? "0 2px 20px rgba(0,0,0,0.3)" : "none";
   });
 }
 
 /* ===== Mobile Nav Toggle ===== */
 function toggleNav() {
-  const links  = document.getElementById("nav-links");
-  const burger = document.getElementById("nav-burger");
-  links.classList.toggle("open");
-  burger.classList.toggle("open");
+  document.getElementById("nav-links").classList.toggle("open");
+  document.getElementById("nav-burger").classList.toggle("open");
 }
+
 function closeNav() {
-  document.getElementById("nav-links")?.classList.remove("open");
-  document.getElementById("nav-burger")?.classList.remove("open");
+  var links  = document.getElementById("nav-links");
+  var burger = document.getElementById("nav-burger");
+  if (links)  links.classList.remove("open");
+  if (burger) burger.classList.remove("open");
 }
 
 /* ===== Init ===== */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
   buildMenuCards();
   buildAvailability();
+  buildComingSoon();
   buildTestimonials();
   buildWhatsAppLinks();
   initNavScroll();
