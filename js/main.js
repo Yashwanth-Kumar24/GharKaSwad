@@ -118,7 +118,7 @@ const SITE_DATA = {
 function whatsappLink(number, message) {
   const num = (number || "").replace(/\D/g, "");
   const msg = encodeURIComponent(message || "Hi! I'd like to place an order from Ghar Ka Swad.");
-  return `https://wa.me/${num}?text=${msg}`;
+  return `https://wa.me/${+916300315974}?text=${msg}`;
 }
 
 /* ===== Build Menu Cards ===== */
