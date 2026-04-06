@@ -128,7 +128,7 @@ const SITE_DATA = {
     },
     {
       id: 4,
-      name: "Vikram K.",
+      name: "Surya",
       avatar: "V",
       rating: 5,
       text: "Ordered the combo on a lazy Sunday - chai, bun, and cake. Honestly felt like a home snack. Great value for the price.",
@@ -227,8 +227,8 @@ function buildComingSoon() {
 
   grid.innerHTML = SITE_DATA.coming_soon.map(function(item) {
     return '<div class="coming-card">'
-      + '<div class="coming-emoji">' + item.emoji + '</div>'
-      + '<div class="coming-soon-badge">Coming Soon</div>'
+      // + '<div class="coming-emoji">' + item.emoji + '</div>'
+      // + '<div class="coming-soon-badge">Coming Soon</div>'
       + '<h3 class="coming-name">' + item.name + '</h3>'
       + '<p class="coming-desc">' + item.description + '</p>'
       + '<span class="coming-tag">' + item.tag + '</span>'
