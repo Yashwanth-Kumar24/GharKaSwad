@@ -364,10 +364,12 @@ section { padding: 80px 5%; }
   letter-spacing: 0.5px;
 }
 
-.badge-combo    { background: #fef3cd; color: #856404; }
-.badge-preorder { background: var(--green-light); color: var(--green); }
-.badge-egg      { background: #fde8e8; color: var(--red-badge); }
-.badge-new      { background: #e0f0ff; color: #1a5fb4; }
+.badge-combo      { background: #fef3cd; color: #856404; }
+.badge-preorder   { background: var(--green-light); color: var(--green); }
+.badge-egg        { background: #fde8e8; color: var(--red-badge); }
+.badge-new        { background: #e0f0ff; color: #1a5fb4; }
+.badge-instock    { background: #d4f5e2; color: #1a7a45; }
+.badge-outofstock { background: #fde8e8; color: #b91c1c; }
 
 .menu-card-tagline {
   font-size: 0.78rem;
@@ -430,6 +432,22 @@ section { padding: 80px 5%; }
 }
 
 .menu-card-order:hover { background: var(--brown-mid); }
+
+/* Out of stock state */
+.card-oos { opacity: 0.6; }
+.card-oos .menu-card-img { filter: grayscale(60%); }
+
+.out-of-stock-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #e5e7eb;
+  color: #9ca3af;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: not-allowed;
+}
 
 /* combo card highlight */
 .menu-card.combo-highlight {
