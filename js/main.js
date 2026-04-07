@@ -53,7 +53,7 @@ const SITE_DATA = {
     {
       id: "frenchfries",
       name: "Peri peri French Fries",
-      tagline: "Crispy & Golden",
+      tagline: "Zero Oil. All Crunch.",
       description: "Crispy, golden peri peri fries — air-fried, not deep-fried. All the crunch, none of the guilt. A bold, spicy snack that's hard to stop at one.",
       price: 3.29,
       badge: "",
