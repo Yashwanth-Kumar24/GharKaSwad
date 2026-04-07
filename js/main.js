@@ -152,10 +152,10 @@ const SITE_DATA = {
     },
     {
       id: 3,
-      name: "Harsha",
+      name: "Sindhoora",
       avatar: "H",
       rating: 5,
-      text: "The bun maska has this perfect balance - not too sweet, just enough butter. Exactly how it should be. Had two and don't regret it.",
+      text: "Yummyyyy ⭐️⭐️⭐️⭐️⭐️. The bun maska has this perfect balance - not too sweet, just enough butter. Exactly how it should be. Had two and don't regret it.",
       item: "Bun Maska"
     },
     {
