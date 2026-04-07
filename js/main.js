@@ -1,6 +1,5 @@
 /* ===== GHAR KA SWAD - Main JS ===== */
-/* Edit SITE_DATA below to update menu items, prices, timings, and testimonials */
-/* This file is the single source of truth                                      */
+/* Edit SITE_DATA below to update items, combos, timings, and testimonials      */
 
 const SITE_DATA = {
   whatsapp_number: "916300315974",
@@ -22,9 +21,9 @@ const SITE_DATA = {
       id: "bun-maska",
       name: "Bun Maska",
       tagline: "Soft & Buttery",
-      description: "Fluffy homestyle bun generously slathered with creamy butter. The perfect companion to your chai.",
+      description: "Fluffy homestyle bun generously slathered with creamy butter. Soft on the inside, golden on the outside - a classic done right.",
       price: 2.99,
-      badge: "",
+      badge: "Most Ordered",
       contains: "",
       inStock: true,
       image: "assets/bun_maska.jpeg"
@@ -35,32 +34,65 @@ const SITE_DATA = {
       tagline: "Light & Fluffy",
       description: "A soft, melt-in-your-mouth sponge cake made from scratch - just like the sweet bun from your childhood.",
       price: 1.79,
-      badge: "Contains Egg",
+      badge: "",
       contains: "egg",
       inStock: true,
       image: "assets/sponge_cake.jpeg"
     },
     {
-      id: "combo",
-      name: "The Full Set",
-      tagline: "Best Value",
-      description: "Chai + Bun Maska + Sponge Cake. Everything you need in one go. The ultimate homestyle combo.",
-      price: 5.99,
-      badge: "Combo Offer",
+      id: "tresleches",
+      name: "Tres Leches Cake",
+      tagline: "Pre-Order Special",
+      description: "A delicate three-milk cake soaked in sweet cream and topped with fluffy whipped cream. Moist, rich, and made to order - worth every bite.",
+      price: "3.99",
+      badge: "",
       contains: "egg",
       inStock: true,
+      image: "assets/special.png"
+    },
+    {
+      id: "frenchfries",
+      name: "Peri peri French Fries",
+      tagline: "Crispy & Golden",
+      description: "Hot, crispy fries seasoned just right. The perfect savoury bite - on their own or alongside your chai.",
+      price: 3.29,
+      badge: "",
+      contains: "",
+      inStock: true,
+      image: "assets/french_fries.jpg"
+    }
+  ],
+
+  combos: [
+    {
+      id: "combo-1",
+      name: "Chai + Bun Maska",
+      items: ["Masala Chai", "Bun Maska"],
+      price: 4.50,
+      original: 4.78,
+      badge: "Save $0.28",
+      description: "The classic pairing - a hot cup of spiced chai with a soft, buttery bun. Simple, satisfying, and always right.",
+      image: "assets/combo_2.png"
+    },
+    {
+      id: "combo-2",
+      name: "Chai + Bun Maska + Sponge Cake",
+      items: ["Masala Chai", "Bun Maska", "Sponge Cake"],
+      price: 5.99,
+      original: 6.57,
+      badge: "Save $0.58",
+      description: "The full homestyle spread - chai, buttery bun, and a slice of fluffy sponge cake. Everything you need for the perfect break.",
       image: "assets/combo.png"
     },
     {
-      id: "custom",
-      name: "Custom Desserts",
-      tagline: "Made to Order",
-      description: "Cakes and desserts crafted for your special moments. Pre-order with us on WhatsApp and we'll make it happen.",
-      price: "",
-      price_label: "Price on Request",
-      badge: "Pre-Order",
-      contains: "",
-      image: "assets/special.png"
+      id: "combo-3",
+      name: "Bun Maska + French Fries",
+      items: ["Bun Maska", "French Fries"],
+      price: 5.99,
+      original: 6.28,
+      badge: "Save $0.29",
+      description: "Soft buttery bun and hot crispy fries — the snack combo that hits every time. Simple, savoury, and completely satisfying.",
+      image: "assets/combo_3.png"
     }
   ],
 
@@ -77,25 +109,25 @@ const SITE_DATA = {
   coming_soon: [
     {
       name: "Karapusa / Murukulu",
-      emoji: "🌀",
+      emoji: "circle",
       description: "Crunchy, spiced, and utterly addictive. Perfect for snacking or sharing at parties. Great for bulk orders.",
       tag: "Bulk-Friendly"
     },
     {
       name: "Onion Pakodi",
-      emoji: "🧅",
+      emoji: "onion",
       description: "Crispy golden fritters with a kick of green chilli and fresh onion. Best had hot off the pan - perfect for pickup.",
       tag: "Best Fresh"
     },
     {
       name: "Atukulu / Bhel Mixture",
-      emoji: "🥣",
+      emoji: "bowl",
       description: "A light, flavourful flattened rice mix loaded with crunch and spice. Great as an evening snack, brilliant in bulk.",
       tag: "Bulk-Friendly"
     },
     {
       name: "Brownie + Ice Cream",
-      emoji: "🍫",
+      emoji: "dessert",
       description: "Warm homemade brownie paired with a scoop of ice cream. The indulgent combo you didn't know you needed.",
       tag: "Dessert Combo"
     }
@@ -170,18 +202,16 @@ function buildMenuCards() {
       : (item.price_label || "Price on Request");
     var priceClass = hasPrice ? "" : "price-request";
 
-    // inStock: true  = active + "In Stock" badge shown
-    // inStock: false = greyed out + "Out of Stock" badge shown
-    // inStock: not set (undefined) = active, no stock badge at all
     var stockSet = item.inStock !== undefined;
     var inStock  = item.inStock !== false;
 
     var badges = [];
-    if (stockSet && inStock)  badges.push('<span class="badge badge-instock">In Stock</span>');
-    if (stockSet && !inStock) badges.push('<span class="badge badge-outofstock">Out of Stock</span>');
-    if (item.badge === "Combo Offer") badges.push('<span class="badge badge-combo">Combo</span>');
-    if (item.badge === "Pre-Order")   badges.push('<span class="badge badge-preorder">Pre-Order</span>');
-    if (item.contains === "egg")      badges.push('<span class="badge badge-egg">Contains Egg</span>');
+    if (stockSet && inStock)           badges.push('<span class="badge badge-instock">In Stock</span>');
+    if (stockSet && !inStock)          badges.push('<span class="badge badge-outofstock">Out of Stock</span>');
+    if (item.badge === "Combo Offer")  badges.push('<span class="badge badge-combo">Combo</span>');
+    if (item.badge === "Pre-Order")    badges.push('<span class="badge badge-preorder">Pre-Order</span>');
+    if (item.badge === "Most Ordered") badges.push('<span class="badge badge-popular">Most Ordered</span>');
+    if (item.contains === "egg")       badges.push('<span class="badge badge-egg">Contains Egg</span>');
     var badgeHTML = badges.length ? '<div class="menu-card-badges">' + badges.join("") + '</div>' : "";
 
     var orderMsg = "Hi! I'd like to order " + item.name + " from Ghar Ka Swad.";
@@ -201,6 +231,39 @@ function buildMenuCards() {
       + '<div class="menu-card-footer">'
       + '<span class="menu-card-price ' + priceClass + '">' + priceStr + '</span>'
       + orderBtn
+      + '</div></div></div>';
+  }).join("");
+}
+
+/* ===== Build Combos ===== */
+function buildCombos() {
+  var grid = document.getElementById("combos-grid");
+  if (!grid || !SITE_DATA.combos) return;
+
+  var wa  = SITE_DATA.whatsapp_number;
+  var cur = SITE_DATA.currency || "$";
+
+  grid.innerHTML = SITE_DATA.combos.map(function(combo) {
+    var orderMsg = "Hi! I'd like to order the " + combo.name + " combo from Ghar Ka Swad.";
+    var waHref   = whatsappLink(wa, orderMsg);
+    var itemTags = combo.items.map(function(i) {
+      return '<span class="combo-item-tag">' + i + '</span>';
+    }).join("");
+
+    return '<div class="combo-card">'
+      + '<img class="combo-card-img" src="' + combo.image + '" alt="' + combo.name + '" loading="lazy"'
+      + ' onerror="this.onerror=null;this.style.background=\'#f0e8dc\';this.style.minHeight=\'180px\';" />'
+      + '<div class="combo-card-body">'
+      + '<div class="combo-save-badge">' + combo.badge + '</div>'
+      + '<h3 class="combo-card-name">' + combo.name + '</h3>'
+      + '<div class="combo-item-tags">' + itemTags + '</div>'
+      + '<p class="combo-card-desc">' + combo.description + '</p>'
+      + '<div class="combo-card-footer">'
+      + '<div class="combo-pricing">'
+      + '<span class="combo-price">' + cur + combo.price.toFixed(2) + '</span>'
+      + '<span class="combo-original">' + cur + combo.original.toFixed(2) + '</span>'
+      + '</div>'
+      + '<a href="' + waHref + '" target="_blank" rel="noopener" class="menu-card-order">' + WA_SVG + ' Order</a>'
       + '</div></div></div>';
   }).join("");
 }
@@ -341,6 +404,7 @@ function closeNav() {
 /* ===== Init ===== */
 document.addEventListener("DOMContentLoaded", function() {
   buildMenuCards();
+  buildCombos();
   buildAvailability();
   buildComingSoon();
   buildTestimonials();

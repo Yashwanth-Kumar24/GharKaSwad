@@ -370,6 +370,7 @@ section { padding: 80px 5%; }
 .badge-new        { background: #e0f0ff; color: #1a5fb4; }
 .badge-instock    { background: #d4f5e2; color: #1a7a45; }
 .badge-outofstock { background: #fde8e8; color: #b91c1c; }
+.badge-popular    { background: #fff0d4; color: #92580a; }
 
 .menu-card-tagline {
   font-size: 0.78rem;
@@ -566,6 +567,121 @@ section { padding: 80px 5%; }
   transition: color 0.2s;
 }
 .coming-wa-link:hover { color: #25D366; }
+
+/* ===== COMBOS ===== */
+#combos {
+  background: var(--warm-white);
+}
+
+.combos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.combo-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid var(--gold);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.combo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(59,31,14,0.16);
+}
+
+.combo-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.combo-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.combo-save-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--brown-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.combo-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--brown-dark);
+  margin-bottom: 10px;
+}
+
+.combo-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.combo-item-tag {
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.combo-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.combo-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f0e8dc;
+}
+
+.combo-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.combo-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brown-mid);
+}
+
+.combo-original {
+  font-size: 0.88rem;
+  color: #bbb;
+  text-decoration: line-through;
+}
 
 /* ===== AVAILABILITY ===== */
 #availability {
