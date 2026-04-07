@@ -114,9 +114,9 @@ const SITE_DATA = {
       tag: "Bulk-Friendly"
     },
     {
-      name: "Onion Pakodi",
-      emoji: "onion",
-      description: "Crispy golden fritters with a kick of green chilli and fresh onion. Best had hot off the pan - perfect for pickup.",
+      name: "Egg Puff",
+      emoji: "puff",
+      description: "Flaky, golden pastry with a spiced egg filling. Crispy on the outside, soft and savoury inside - a classic snack done homestyle.",
       tag: "Best Fresh"
     },
     {
