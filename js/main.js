@@ -54,7 +54,7 @@ const SITE_DATA = {
       id: "frenchfries",
       name: "Peri peri French Fries",
       tagline: "Crispy & Golden",
-      description: "Hot, crispy fries seasoned just right. The perfect savoury bite - on their own or alongside your chai.",
+      description: "Crispy, golden peri peri fries — air-fried, not deep-fried. All the crunch, none of the guilt. A bold, spicy snack that's hard to stop at one.",
       price: 3.29,
       badge: "",
       contains: "",
