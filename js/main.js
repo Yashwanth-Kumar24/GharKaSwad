@@ -12,7 +12,7 @@ const SITE_DATA = {
       tagline: "Freshly Brewed",
       description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
       price: 1.79,
-      badge: "",
+      badge: "Almost Gone",
       contains: "",
       inStock: true,
       image: "assets/chai.jpeg"
@@ -99,10 +99,10 @@ const SITE_DATA = {
   availability: [
     { day: "Monday",    hours: "11:00 AM - 11:00 PM", open: true  },
     { day: "Tuesday",   hours: "11:00 AM - 11:00 PM", open: true  },
-    { day: "Wednesday", hours: "11:00 AM - 5:00 PM",  open: true  },
-    { day: "Thursday",  hours: "Closed",              open: false },
-    { day: "Friday",    hours: "Closed",              open: false },
-    { day: "Saturday",  hours: "Closed",              open: false },
+    { day: "Wednesday", hours: "11:00 AM - 9:00 PM",  open: true  },
+    { day: "Thursday",  hours: "2:00 PM - 9:00 PM",  open: true },
+    { day: "Friday",    hours: "2:00 PM - 9:00 PM",  open: true },
+    { day: "Saturday",  hours: "11:00 AM - 11:00 PM",  open: true },
     { day: "Sunday",    hours: "11:00 AM - 11:00 PM", open: true  }
   ],
 
@@ -211,6 +211,7 @@ function buildMenuCards() {
     if (item.badge === "Combo Offer")  badges.push('<span class="badge badge-combo">Combo</span>');
     if (item.badge === "Pre-Order")    badges.push('<span class="badge badge-preorder">Pre-Order</span>');
     if (item.badge === "Most Ordered") badges.push('<span class="badge badge-popular">Most Ordered</span>');
+    if (item.badge === "Almost Gone") badges.push('<span class="badge badge-popular">Almost Gone</span>');
     if (item.contains === "egg")       badges.push('<span class="badge badge-egg">Contains Egg</span>');
     var badgeHTML = badges.length ? '<div class="menu-card-badges">' + badges.join("") + '</div>' : "";
 
