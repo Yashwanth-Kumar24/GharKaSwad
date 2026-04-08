@@ -14,7 +14,7 @@ const SITE_DATA = {
       price: 1.79,
       badge: "Almost Gone",
       contains: "",
-      inStock: true,
+      inStock: false,
       image: "assets/chai.jpeg"
     },
     {
