@@ -4,7 +4,7 @@
 const SITE_DATA = {
   whatsapp_number: "916300315974",
   currency: "$",
-
+  orders_served: 17,
   items: [
     {
       id: "chai",
@@ -176,6 +176,13 @@ const SITE_DATA = {
     }
   ]
 };
+
+function buildStats() {
+  var el = document.getElementById("hero-stats");
+  if (!el) return;
+  el.innerHTML = '<span class="hero-stat-num">' + SITE_DATA.orders_served + '+</span>'
+    + '<span class="hero-stat-label">orders served & counting</span>';
+}
 
 /* ===== Helpers ===== */
 function whatsappLink(number, message) {
@@ -404,6 +411,7 @@ function closeNav() {
 
 /* ===== Init ===== */
 document.addEventListener("DOMContentLoaded", function() {
+  buildStats();
   buildMenuCards();
   buildCombos();
   buildAvailability();
