@@ -12,7 +12,7 @@ const SITE_DATA = {
       tagline: "Freshly Brewed",
       description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
       price: 1.79,
-      badge: "Almost Gone",
+      badge: "",
       contains: "",
       inStock: false,
       image: "assets/chai.jpeg"
