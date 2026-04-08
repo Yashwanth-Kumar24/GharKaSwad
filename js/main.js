@@ -58,7 +58,7 @@ const SITE_DATA = {
       price: 3.29,
       badge: "",
       contains: "",
-      inStock: true,
+      inStock: false,
       image: "assets/french_fries.jpg"
     }
   ],
