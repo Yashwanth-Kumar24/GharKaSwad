@@ -2,9 +2,9 @@
 /* Edit SITE_DATA below to update items, combos, timings, and testimonials      */
 
 const SITE_DATA = {
-  whatsapp_number: "916300315974",
+  whatsapp_number: "917075897155",
   currency: "$",
-  orders_served: 17,
+  orders_served: 18,
   items: [
     {
       id: "chai",
