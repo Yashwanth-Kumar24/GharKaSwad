@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://www.ghar-ka-swad.com/sitemap.xml
+Disallow: /
