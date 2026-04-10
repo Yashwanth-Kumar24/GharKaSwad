@@ -8,42 +8,6 @@ const SITE_DATA = {
   items_served: 88,
   items: [
     {
-      id: "chai",
-      name: "Masala Chai",
-      tagline: "Freshly Brewed",
-      description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
-      price: 1.79,
-      badge: "Kadak & Pure",
-      contains: "",
-      inStock: true,
-      orders_sold: 29,
-      image: "assets/chai.jpeg"
-    },
-    {
-      id: "bun-maska",
-      name: "Bun Maska",
-      tagline: "Soft & Buttery",
-      description: "Fluffy homestyle bun generously slathered with creamy butter. Soft on the inside, golden on the outside - a classic done right.",
-      price: 2.99,
-      badge: "Most Ordered",
-      contains: "",
-      inStock: true,
-      orders_sold: 38,
-      image: "assets/bun_maska.jpeg"
-    },
-    {
-      id: "sponge-cake",
-      name: "Sponge Cake",
-      tagline: "Light & Fluffy",
-      description: "A soft, melt-in-your-mouth sponge cake made from scratch - just like the sweet bun from your childhood.",
-      price: 1.79,
-      badge: "",
-      contains: "egg",
-      inStock: true,
-      orders_sold: 19,
-      image: "assets/sponge_cake.jpeg"
-    },
-    {
       id: "tresleches",
       name: "Tres Leches Cake",
       tagline: "Pre-Order Only. Limited Slots",
@@ -66,6 +30,42 @@ const SITE_DATA = {
       inStock: true,
       orders_sold: 1,
       image: "assets/french_fries.jpg"
+    },
+    {
+      id: "bun-maska",
+      name: "Bun Maska",
+      tagline: "Soft & Buttery",
+      description: "Fluffy homestyle bun generously slathered with creamy butter. Soft on the inside, golden on the outside - a classic done right.",
+      price: 2.99,
+      badge: "Most Ordered",
+      contains: "",
+      inStock: true,
+      orders_sold: 38,
+      image: "assets/bun_maska.jpeg"
+    },
+    {
+      id: "chai",
+      name: "Masala Chai",
+      tagline: "Freshly Brewed",
+      description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
+      price: 1.79,
+      badge: "Kadak & Pure",
+      contains: "",
+      inStock: true,
+      orders_sold: 29,
+      image: "assets/chai.jpeg"
+    },
+    {
+      id: "sponge-cake",
+      name: "Sponge Cake",
+      tagline: "Light & Fluffy",
+      description: "A soft, melt-in-your-mouth sponge cake made from scratch - just like the sweet bun from your childhood.",
+      price: 1.79,
+      badge: "",
+      contains: "egg",
+      inStock: true,
+      orders_sold: 19,
+      image: "assets/sponge_cake.jpeg"
     }
   ],
 
