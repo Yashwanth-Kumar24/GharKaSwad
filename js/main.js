@@ -4,7 +4,7 @@
 const SITE_DATA = {
   whatsapp_number: "917075897155",
   currency: "$",
-  orders_served: 18,
+  orders_served: 20,
   items: [
     {
       id: "chai",
