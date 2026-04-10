@@ -407,6 +407,20 @@ section { padding: 80px 5%; }
 .badge-instock    { background: #d4f5e2; color: #1a7a45; }
 .badge-outofstock { background: #fde8e8; color: #b91c1c; }
 .badge-popular    { background: #fff0d4; color: #92580a; }
+.badge-rank       { background: #3b1f0e; color: var(--gold-light); border: 1px solid var(--gold); }
+.badge-new-item   { background: #e0f0ff; color: #1a5fb4; }
+
+.menu-card-price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-orders-count {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
 
 .menu-card-tagline {
   font-size: 0.78rem;

@@ -4,7 +4,8 @@
 const SITE_DATA = {
   whatsapp_number: "917075897155",
   currency: "$",
-  orders_served: 20,
+  orders_served: 22,
+  items_served: 88,
   items: [
     {
       id: "chai",
@@ -12,9 +13,10 @@ const SITE_DATA = {
       tagline: "Freshly Brewed",
       description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
       price: 1.79,
-      badge: "Almost Gone",
+      badge: "Kadak & Pure",
       contains: "",
       inStock: true,
+      orders_sold: 29,
       image: "assets/chai.jpeg"
     },
     {
@@ -26,6 +28,7 @@ const SITE_DATA = {
       badge: "Most Ordered",
       contains: "",
       inStock: true,
+      orders_sold: 38,
       image: "assets/bun_maska.jpeg"
     },
     {
@@ -37,17 +40,19 @@ const SITE_DATA = {
       badge: "",
       contains: "egg",
       inStock: true,
+      orders_sold: 19,
       image: "assets/sponge_cake.jpeg"
     },
     {
       id: "tresleches",
       name: "Tres Leches Cake",
-      tagline: "Pre-Order Special",
+      tagline: "Pre-Order Only. Limited Slots",
       description: "A delicate three-milk cake soaked in sweet cream and topped with fluffy whipped cream. Moist, rich, and made to order - worth every bite.",
-      price: "3.99",
+      price: 3.99,
       badge: "",
       contains: "egg",
       inStock: true,
+      orders_sold: 1,
       image: "assets/special.png"
     },
     {
@@ -59,18 +64,19 @@ const SITE_DATA = {
       badge: "",
       contains: "",
       inStock: true,
+      orders_sold: 1,
       image: "assets/french_fries.jpg"
     }
   ],
 
   combos: [
     {
-      id: "combo-1",
+      id: "combo",
       name: "Chai + Bun Maska",
       items: ["Masala Chai", "Bun Maska"],
       price: 4.50,
       original: 4.78,
-      badge: "Save $0.28",
+      badge: "Hyd Classic • Save $0.28",
       description: "The classic pairing - a hot cup of spiced chai with a soft, buttery bun. Simple, satisfying, and always right.",
       image: "assets/combo_2.png"
     },
@@ -80,7 +86,7 @@ const SITE_DATA = {
       items: ["Masala Chai", "Bun Maska", "Sponge Cake"],
       price: 5.99,
       original: 6.57,
-      badge: "Save $0.58",
+      badge: "Best Seller • Save $0.58",
       description: "The full homestyle spread - chai, buttery bun, and a slice of fluffy sponge cake. Everything you need for the perfect break.",
       image: "assets/combo.png"
     },
@@ -90,7 +96,7 @@ const SITE_DATA = {
       items: ["Bun Maska", "French Fries"],
       price: 5.99,
       original: 6.28,
-      badge: "Save $0.29",
+      badge: "Street Food Vibes • Save $0.29",
       description: "Soft buttery bun and hot crispy fries — the snack combo that hits every time. Simple, savoury, and completely satisfying.",
       image: "assets/combo_3.png"
     }
@@ -144,11 +150,11 @@ const SITE_DATA = {
     },
     {
       id: 2,
-      name: "Sri Ram",
-      avatar: "S",
+      name: "Charan",
+      avatar: "C",
       rating: 5,
-      text: "The sponge cake is incredibly fluffy. Took one bite and was instantly reminded of the sweet buns from my school canteen. Pure nostalgia.",
-      item: "Sponge Cake"
+      text: "Ordered bun maska and chai — came back within the hour for 5 bun maskas and 2 chais. Couldn't resist. The whole group ended up hooked.",
+      item: "Bun Maska + Masala Chai"
     },
     {
       id: 3,
@@ -168,11 +174,19 @@ const SITE_DATA = {
     },
     {
       id: 5,
-      name: "Akshay",
-      avatar: "A",
+      name: "Tejaswini",
+      avatar: "T",
       rating: 5,
-      text: "The chai hits different. Rich, spiced, and perfectly brewed every single time. It's the kind of chai you keep coming back for.",
-      item: "Masala Chai"
+      text: "The bun maska is pure Hyderabad on a plate — soft, buttery, and exactly how it should be. The peri peri fries hit different too, crispy with just the right kick. Felt like home, honestly.",
+      item: "Bun Maska + French Fries"
+    },
+    {
+      id: 6,
+      name: "Sri Ram",
+      avatar: "S",
+      rating: 5,
+      text: "The sponge cake is incredibly fluffy. Took one bite and was instantly reminded of the sweet buns from my school canteen. Pure nostalgia.",
+      item: "Sponge Cake"
     }
   ]
 };
@@ -180,8 +194,9 @@ const SITE_DATA = {
 function buildStats() {
   var el = document.getElementById("hero-stats");
   if (!el) return;
-  el.innerHTML = '<span class="hero-stat-num">' + SITE_DATA.orders_served + '+</span>'
-    + '<span class="hero-stat-label">orders served & counting</span>';
+  el.innerHTML = '<span class="hero-stat-num">' + SITE_DATA.orders_served + '</span>'
+    + '<span class="hero-stat-label"> orders </span> <span class="hero-stat-num">' + SITE_DATA.items_served + '</span>' 
+    +  '<span class="hero-stat-label"> items served</span>';
 }
 
 /* ===== Helpers ===== */
@@ -201,6 +216,13 @@ function buildMenuCards() {
   var wa  = SITE_DATA.whatsapp_number;
   var cur = SITE_DATA.currency || "$";
 
+  // Compute popularity ranks from orders_sold (top 3 only)
+  var rankMap = {};
+  var sorted = SITE_DATA.items
+    .filter(function(i) { return i.orders_sold && i.orders_sold > 2; })
+    .slice().sort(function(a, b) { return b.orders_sold - a.orders_sold; });
+  sorted.slice(0, 3).forEach(function(item, idx) { rankMap[item.id] = idx + 1; });
+
   grid.innerHTML = SITE_DATA.items.map(function(item) {
     var isCombo  = item.id === "combo";
     var hasPrice = item.price !== "" && item.price !== null && item.price !== undefined;
@@ -218,9 +240,19 @@ function buildMenuCards() {
     if (item.badge === "Combo Offer")  badges.push('<span class="badge badge-combo">Combo</span>');
     if (item.badge === "Pre-Order")    badges.push('<span class="badge badge-preorder">Pre-Order</span>');
     if (item.badge === "Most Ordered") badges.push('<span class="badge badge-popular">Most Ordered</span>');
-    if (item.badge === "Almost Gone") badges.push('<span class="badge badge-popular">Almost Gone</span>');
+    if (item.badge === "Almost Gone")  badges.push('<span class="badge badge-popular">Almost Gone</span>');
+    if (item.badge === "Kadak & Pure")  badges.push('<span class="badge badge-popular">Kadak & Pure</span>');
     if (item.contains === "egg")       badges.push('<span class="badge badge-egg">Contains Egg</span>');
+    // Rank badge — top 3 by orders_sold
+    if (rankMap[item.id])              badges.push('<span class="badge badge-rank">#' + rankMap[item.id] + ' Seller</span>');
+    // New item nudge — 2 or fewer orders
+    if (item.orders_sold && item.orders_sold <= 2) badges.push('<span class="badge badge-new-item">New — Try It!</span>');
     var badgeHTML = badges.length ? '<div class="menu-card-badges">' + badges.join("") + '</div>' : "";
+
+    // Orders counter
+    var ordersHTML = item.orders_sold && item.orders_sold > 0
+      ? '<span class="card-orders-count">' + item.orders_sold + ' ordered</span>'
+      : '';
 
     var orderMsg = "Hi! I'd like to order " + item.name + " from Ghar Ka Swad.";
     var waHref   = whatsappLink(wa, orderMsg);
@@ -237,7 +269,10 @@ function buildMenuCards() {
       + '<h3 class="menu-card-name">' + item.name + '</h3>'
       + '<p class="menu-card-desc">' + item.description + '</p>'
       + '<div class="menu-card-footer">'
+      + '<div class="menu-card-price-wrap">'
       + '<span class="menu-card-price ' + priceClass + '">' + priceStr + '</span>'
+      + ordersHTML
+      + '</div>'
       + orderBtn
       + '</div></div></div>';
   }).join("");
