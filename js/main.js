@@ -4,8 +4,8 @@
 const SITE_DATA = {
   whatsapp_number: "917075897155",
   currency: "$",
-  orders_served: 23,
-  items_served: 91,
+  orders_served: 24,
+  items_served: 95,
   items: [
     {
       id: "borugulu",
@@ -52,7 +52,7 @@ const SITE_DATA = {
       badge: "Most Ordered",
       contains: "",
       inStock: true,
-      orders_sold: 39,
+      orders_sold: 41,
       image: "assets/bun_maska.jpeg"
     },
     {
@@ -64,7 +64,7 @@ const SITE_DATA = {
       badge: "Kadak & Pure",
       contains: "",
       inStock: true,
-      orders_sold: 30,
+      orders_sold: 32,
       image: "assets/chai.jpeg"
     },
     {
