@@ -8,6 +8,18 @@ const SITE_DATA = {
   items_served: 91,
   items: [
     {
+      id: "borugulu",
+      name: "Borugulu Mixture",
+      tagline: "Crispy. Spiced. Addictive.",
+      description: "Homemade South Indian puffed rice mixture — tossed with roasted peanuts, chickpeas and fresh coriander. Light, crunchy, and dangerously snackable. Perfect with chai.",
+      price: 2.99,
+      badge: "New — Fresh Batch!",
+      contains: "",
+      inStock: true,
+      orders_sold: 0,
+      image: "assets/borugulu.png"
+    },
+    {
       id: "tresleches",
       name: "Tres Leches Cake",
       tagline: "Pre-Order Only. Limited Slots",
@@ -70,6 +82,16 @@ const SITE_DATA = {
   ],
 
   combos: [
+        {
+      id: "combo-4",
+      name: "Chai + Borugulu Mixture",
+      items: ["Masala Chai", "Borugulu Mixture"],
+      price: 4.50,
+      original: 4.78,
+      badge: "Telugu Evening Special • Save $0.28",
+      description: "Hot masala chai paired with crispy homemade borugulu mixture — the classic Telugu evening combo. Light, spiced, and completely satisfying.",
+      image: "assets/combo_4.png"
+    },
     {
       id: "combo",
       name: "Chai + Bun Maska",
@@ -125,10 +147,16 @@ const SITE_DATA = {
       description: "Flaky, golden pastry with a spiced egg filling. Crispy on the outside, soft and savoury inside - a classic snack done homestyle.",
       tag: "Best Fresh"
     },
+    // {
+    //   name: "Atukulu / Bhel Mixture",
+    //   emoji: "bowl",
+    //   description: "A light, flavourful flattened rice mix loaded with crunch and spice. Great as an evening snack, brilliant in bulk.",
+    //   tag: "Bulk-Friendly"
+    // },
     {
-      name: "Atukulu / Bhel Mixture",
+      name: "Borugulu Mixture — Bulk Pack",
       emoji: "bowl",
-      description: "A light, flavourful flattened rice mix loaded with crunch and spice. Great as an evening snack, brilliant in bulk.",
+      description: "Love our mixture? We now take bulk orders for parties and gatherings. Fresh batch, spiced your way.",
       tag: "Bulk-Friendly"
     },
     {
@@ -241,6 +269,7 @@ function buildMenuCards() {
     if (item.badge === "Pre-Order")    badges.push('<span class="badge badge-preorder">Pre-Order</span>');
     if (item.badge === "Most Ordered") badges.push('<span class="badge badge-popular">Most Ordered</span>');
     if (item.badge === "Almost Gone")  badges.push('<span class="badge badge-popular">Almost Gone</span>');
+    if (item.badge === "New — Fresh Batch!") badges.push('<span class="badge badge-new-item">New — Fresh Batch!</span>');
     if (item.badge === "Kadak & Pure")  badges.push('<span class="badge badge-popular">Kadak & Pure</span>');
     if (item.contains === "egg")       badges.push('<span class="badge badge-egg">Contains Egg</span>');
     // Rank badge — top 3 by orders_sold
