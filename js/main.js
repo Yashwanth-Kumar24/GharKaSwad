@@ -4,8 +4,8 @@
 const SITE_DATA = {
   whatsapp_number: "917075897155",
   currency: "$",
-  orders_served: 22,
-  items_served: 88,
+  orders_served: 23,
+  items_served: 91,
   items: [
     {
       id: "tresleches",
@@ -16,7 +16,7 @@ const SITE_DATA = {
       badge: "",
       contains: "egg",
       inStock: true,
-      orders_sold: 1,
+      orders_sold: 2,
       image: "assets/special.png"
     },
     {
@@ -40,7 +40,7 @@ const SITE_DATA = {
       badge: "Most Ordered",
       contains: "",
       inStock: true,
-      orders_sold: 38,
+      orders_sold: 39,
       image: "assets/bun_maska.jpeg"
     },
     {
@@ -52,7 +52,7 @@ const SITE_DATA = {
       badge: "Kadak & Pure",
       contains: "",
       inStock: true,
-      orders_sold: 29,
+      orders_sold: 30,
       image: "assets/chai.jpeg"
     },
     {
