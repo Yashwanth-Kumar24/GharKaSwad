@@ -8,6 +8,18 @@ const SITE_DATA = {
   items_served: 95,
   items: [
     {
+      id: "egg-puff",
+      name: "Egg Puff",
+      tagline: "Flaky. Golden. Fresh from the Oven.",
+      description: "Crispy, golden pastry with a spiced egg filling — soft and savoury inside, flaky on the outside. Made fresh in small batches, homestyle. A classic done right.",
+      price: 3.49,
+      badge: "New — Fresh Batch!",
+      contains: "egg",
+      inStock: true,
+      orders_sold: 0,
+      image: "assets/egg_puff.jpg"
+    },
+    {
       id: "borugulu",
       name: "Borugulu Mixture",
       tagline: "Crispy. Spiced. Addictive.",
@@ -82,7 +94,17 @@ const SITE_DATA = {
   ],
 
   combos: [
-        {
+    {
+      id: "combo-5",
+      name: "Chai + Egg Puff",
+      items: ["Masala Chai", "Egg Puff"],
+      price: 4.99,
+      original: 5.28,
+      badge: "Fresh Pairing • Save $0.29",
+      description: "Hot masala chai paired with a fresh-from-the-oven egg puff — flaky, spiced, and perfectly crispy. The kind of combo that hits different on a cold day.",
+      image: "assets/combo_5.png"
+    },
+    {
       id: "combo-4",
       name: "Chai + Borugulu Mixture",
       items: ["Masala Chai", "Borugulu Mixture"],
@@ -141,12 +163,12 @@ const SITE_DATA = {
       description: "Crunchy, spiced, and utterly addictive. Perfect for snacking or sharing at parties. Great for bulk orders.",
       tag: "Bulk-Friendly"
     },
-    {
-      name: "Egg Puff",
-      emoji: "puff",
-      description: "Flaky, golden pastry with a spiced egg filling. Crispy on the outside, soft and savoury inside - a classic snack done homestyle.",
-      tag: "Best Fresh"
-    },
+    // {
+    //   name: "Egg Puff",
+    //   emoji: "puff",
+    //   description: "Flaky, golden pastry with a spiced egg filling. Crispy on the outside, soft and savoury inside - a classic snack done homestyle.",
+    //   tag: "Best Fresh"
+    // },
     // {
     //   name: "Atukulu / Bhel Mixture",
     //   emoji: "bowl",
