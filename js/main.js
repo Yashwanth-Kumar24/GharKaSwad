@@ -4,19 +4,19 @@
 const SITE_DATA = {
   whatsapp_number: "916300315974",
   currency: "$",
-  orders_served: 27,
-  items_served: 110,
+  orders_served: 28,
+  items_served: 120,
   items: [
     {
       id: "egg-puff",
-      name: "Egg Puff",
+      name: "Egg Puff / Veg Puff",
       tagline: "Flaky. Golden. Fresh from the Oven.",
-      description: "Crispy, golden pastry with a spiced egg filling — soft and savoury inside, flaky on the outside. Made fresh in small batches, homestyle. A classic done right.",
+      description: "Crispy, golden pastry fresh from the oven — soft and spiced inside, flaky on the outside. Available in Egg or Veg. Made in small batches, homestyle.",
       price: 3.49,
       badge: "New — Fresh Batch!",
       contains: "egg",
       inStock: true,
-      orders_sold: 1,
+      orders_sold: 10,
       image: "assets/egg_puff.jpg"
     },
     {
@@ -101,7 +101,7 @@ const SITE_DATA = {
       price: 4.99,
       original: 5.28,
       badge: "Fresh Pairing • Save $0.29",
-      description: "Hot masala chai paired with a fresh-from-the-oven egg puff — flaky, spiced, and perfectly crispy. The kind of combo that hits different on a cold day.",
+      description: "Hot masala chai paired with a fresh-from-the-oven egg/veg puff — flaky, spiced, and perfectly crispy. The kind of combo that hits different on a cold day.",
       image: "assets/combo_5.png"
     },
     {
