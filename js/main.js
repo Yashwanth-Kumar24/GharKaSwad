@@ -4,8 +4,8 @@
 const SITE_DATA = {
   whatsapp_number: "916300315974",
   currency: "$",
-  orders_served: 28,
-  items_served: 120,
+  orders_served: 29,
+  items_served: 125,
   items: [
     {
       id: "egg-puff",
@@ -16,7 +16,7 @@ const SITE_DATA = {
       badge: "New — Fresh Batch!",
       contains: "egg",
       inStock: true,
-      orders_sold: 10,
+      orders_sold: 12,
       image: "assets/egg_puff.jpg"
     },
     {
@@ -39,8 +39,8 @@ const SITE_DATA = {
       price: 3.99,
       badge: "",
       contains: "egg",
-      inStock: false,
-      orders_sold: 10,
+      inStock: true,
+      orders_sold: 11,
       image: "assets/special.png"
     },
     {
@@ -76,7 +76,7 @@ const SITE_DATA = {
       badge: "Kadak & Pure",
       contains: "",
       inStock: true,
-      orders_sold: 34,
+      orders_sold: 36,
       image: "assets/chai.jpeg"
     },
     {
