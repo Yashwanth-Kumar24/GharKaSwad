@@ -39,7 +39,7 @@ const SITE_DATA = {
       price: 3.99,
       badge: "",
       contains: "egg",
-      inStock: false,
+      inStock: true,
       orders_sold: 14,
       image: "assets/special.png"
     },
