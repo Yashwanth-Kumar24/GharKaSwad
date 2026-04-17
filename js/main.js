@@ -20,6 +20,30 @@ const SITE_DATA = {
       image: "assets/egg_puff.jpg"
     },
     {
+      id: "bun-maska",
+      name: "Bun Maska",
+      tagline: "Soft & Buttery",
+      description: "Fluffy homestyle bun generously slathered with creamy butter. Soft on the inside, golden on the outside - a classic done right.",
+      price: 2.99,
+      badge: "Most Ordered",
+      contains: "",
+      inStock: true,
+      orders_sold: 58,
+      image: "assets/bun_maska.jpeg"
+    },
+    {
+      id: "chai",
+      name: "Masala Chai",
+      tagline: "Freshly Brewed",
+      description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
+      price: 1.79,
+      badge: "Kadak & Pure",
+      contains: "",
+      inStock: true,
+      orders_sold: 46,
+      image: "assets/chai.jpeg"
+    },
+    {
       id: "borugulu",
       name: "Borugulu Mixture",
       tagline: "Crispy. Spiced. Addictive.",
@@ -54,30 +78,6 @@ const SITE_DATA = {
       inStock: true,
       orders_sold: 2,
       image: "assets/french_fries.jpg"
-    },
-    {
-      id: "bun-maska",
-      name: "Bun Maska",
-      tagline: "Soft & Buttery",
-      description: "Fluffy homestyle bun generously slathered with creamy butter. Soft on the inside, golden on the outside - a classic done right.",
-      price: 2.99,
-      badge: "Most Ordered",
-      contains: "",
-      inStock: true,
-      orders_sold: 58,
-      image: "assets/bun_maska.jpeg"
-    },
-    {
-      id: "chai",
-      name: "Masala Chai",
-      tagline: "Freshly Brewed",
-      description: "A soul-warming cup of spiced Indian tea brewed the traditional way - bold, aromatic, and just right.",
-      price: 1.79,
-      badge: "Kadak & Pure",
-      contains: "",
-      inStock: true,
-      orders_sold: 46,
-      image: "assets/chai.jpeg"
     },
     {
       id: "sponge-cake",
