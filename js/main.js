@@ -4,8 +4,8 @@
 const SITE_DATA = {
   whatsapp_number: "916300315974",
   currency: "$",
-  orders_served: 38,
-  items_served: 158,
+  orders_served: 44,
+  items_served: 191,
   items: [
     {
       id: "egg-puff",
@@ -15,8 +15,8 @@ const SITE_DATA = {
       price: 3.49,
       badge: "New — Fresh Batch!",
       contains: "egg",
-      inStock: true,
-      orders_sold: 21,
+      inStock: false,
+      orders_sold: 35,
       image: "assets/egg_puff.jpg"
     },
     {
@@ -27,7 +27,7 @@ const SITE_DATA = {
       price: 2.99,
       badge: "New — Fresh Batch!",
       contains: "",
-      inStock: true,
+      inStock: false,
       orders_sold: 0,
       image: "assets/borugulu.png"
     },
@@ -39,8 +39,8 @@ const SITE_DATA = {
       price: 3.99,
       badge: "",
       contains: "egg",
-      inStock: true,
-      orders_sold: 14,
+      inStock: false,
+      orders_sold: 23,
       image: "assets/special.png"
     },
     {
@@ -64,7 +64,7 @@ const SITE_DATA = {
       badge: "Most Ordered",
       contains: "",
       inStock: true,
-      orders_sold: 51,
+      orders_sold: 58,
       image: "assets/bun_maska.jpeg"
     },
     {
@@ -76,7 +76,7 @@ const SITE_DATA = {
       badge: "Kadak & Pure",
       contains: "",
       inStock: true,
-      orders_sold: 43,
+      orders_sold: 46,
       image: "assets/chai.jpeg"
     },
     {
@@ -87,8 +87,8 @@ const SITE_DATA = {
       price: 1.79,
       badge: "",
       contains: "egg",
-      inStock: true,
-      orders_sold: 26,
+      inStock: false,
+      orders_sold: 27,
       image: "assets/sponge_cake.jpeg"
     }
   ],
